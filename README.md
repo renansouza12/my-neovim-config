@@ -9,7 +9,7 @@ To replicate this Neovim setup on another machine:
    Clone this repository into your Neovim configuration folder. On Windows, run in PowerShell or Git Bash:
 
    ```powershell
-   git clone https://github.com/yourusername/nvim-config.git $env:USERPROFILE\AppData\Local\nvim
+   git clone https://github.com/yourusername/nvim-config.git nvim
     ```
 
 3. **Install plugins with Lazy.nvim**  
