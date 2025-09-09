@@ -1,6 +1,15 @@
 require 'core.options'
 require 'core.keymaps'
 
+
+-- Enable syntax and filetype detection globally
+vim.cmd([[
+  syntax enable
+  filetype plugin indent on
+]])
+
+
+
 -- Set up the Lazy plugin manager
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -14,11 +23,11 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Set up plugins
 require('lazy').setup({
+    require 'plugins.treesitter',
     require 'plugins.colortheme',
     require 'plugins.neotree',
     require 'plugins.bufferline',
     require 'plugins.lualine',
-    require 'plugins.treesitter',
     require 'plugins.telescope',
     require 'plugins.lsp',
     require 'plugins.autocompletion',
