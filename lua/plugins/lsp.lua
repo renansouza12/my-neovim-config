@@ -130,53 +130,82 @@ config = function()
   -- - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
   -- - settings (table): Override the default settings passed when initializing the server.
   local servers = {
-    ts_ls = {},
-    ruff = {},
-    pylsp = {
-      settings = {
-        pylsp = {
-          plugins = {
-            pyflakes = { enabled = false },
-            pycodestyle = { enabled = false },
-            autopep8 = { enabled = false },
-            yapf = { enabled = false },
-            mccabe = { enabled = false },
-            pylsp_mypy = { enabled = false },
-            pylsp_black = { enabled = false },
-            pylsp_isort = { enabled = false },
+      tsserver = {
+          init_options = {
+              preferences = {
+                  importModuleSpecifierPreference = "relative", -- or "non-relative"
+                  importModuleSpecifierEnding = "minimal",
+              },
           },
-        },
       },
-    },
-    html = { filetypes = { 'html', 'twig', 'hbs' } },
-    cssls = {},
-    tailwindcss = {},
-    dockerls = {},
-    sqlls = {},
-    terraformls = {},
-    jsonls = {},
-    yamlls = {},
-    lua_ls = {
-      settings = {
-        Lua = {
-          completion = {
-            callSnippet = 'Replace',
+      -- Angular Language Service
+      angularls = {
+          cmd = {
+              "ngserver",
+              "--stdio",
+              "--tsProbeLocations",
+              vim.fn.expand("$HOME") .. "/.npm-global/lib/node_modules",
+              "--ngProbeLocations",
+              vim.fn.expand("$HOME") .. "/.npm-global/lib/node_modules",
           },
-          runtime = { version = 'LuaJIT' },
-          workspace = {
-            checkThirdParty = false,
-            library = vim.api.nvim_get_runtime_file('', true),
-          },
-          diagnostics = {
-            globals = { 'vim' },
-            disable = { 'missing-fields' },
-          },
-          format = {
-            enable = false,
-          },
-        },
+          on_new_config = function(new_config, _)
+              new_config.cmd = {
+                  "ngserver",
+                  "--stdio",
+                  "--tsProbeLocations",
+                  vim.fn.expand("$HOME") .. "/.npm-global/lib/node_modules",
+                  "--ngProbeLocations",
+                  vim.fn.expand("$HOME") .. "/.npm-global/lib/node_modules",
+              }
+          end,
+          filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx" },
       },
-    },
+      ruff = {},
+      pylsp = {
+          settings = {
+              pylsp = {
+                  plugins = {
+                      pyflakes = { enabled = false },
+                      pycodestyle = { enabled = false },
+                      autopep8 = { enabled = false },
+                      yapf = { enabled = false },
+                      mccabe = { enabled = false },
+                      pylsp_mypy = { enabled = false },
+                      pylsp_black = { enabled = false },
+                      pylsp_isort = { enabled = false },
+                  },
+              },
+          },
+      },
+      html = { filetypes = { 'html', 'twig', 'hbs' } },
+      cssls = {},
+      tailwindcss = {},
+      dockerls = {},
+      sqlls = {},
+      terraformls = {},
+      jsonls = {},
+      yamlls = {},
+      lua_ls = {
+          settings = {
+              Lua = {
+                  completion = {
+                      callSnippet = 'Replace',
+                  },
+                  runtime = { version = 'LuaJIT' },
+                  workspace = {
+                      checkThirdParty = false,
+                      library = vim.api.nvim_get_runtime_file('', true),
+                  },
+                  diagnostics = {
+                      globals = { 'vim' },
+                      disable = { 'missing-fields' },
+                  },
+                  format = {
+                      enable = false,
+                  },
+              },
+          },
+      },
   }
 
   -- Ensure the servers and tools above are installed
