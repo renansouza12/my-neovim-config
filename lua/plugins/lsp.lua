@@ -158,7 +158,7 @@ config = function()
                   vim.fn.expand("$HOME") .. "/.npm-global/lib/node_modules",
               }
           end,
-          filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx" },
+          filetypes = {"html", "typescriptreact", "typescript.tsx" },
       },
       ruff = {},
       pylsp = {
@@ -178,7 +178,9 @@ config = function()
           },
       },
       html = { filetypes = { 'html', 'twig', 'hbs' } },
-      cssls = {},
+      cssls = {
+          filetypes = {"css","scss","less"}
+      },
       tailwindcss = {},
       dockerls = {},
       sqlls = {},
