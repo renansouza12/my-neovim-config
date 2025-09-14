@@ -46,34 +46,34 @@ return {
     -- [[ Configure Telescope ]]
     -- See `:help telescope` and `:help telescope.setup()`
     require('telescope').setup {
-      -- You can put your default mappings / updates / etc. in here
-      --  All the info you're looking for is in `:help telescope.setup()`
-      defaults = {
-        mappings = {
-          i = {
-            ['<C-k>'] = require('telescope.actions').move_selection_previous, -- move to prev result
-            ['<C-j>'] = require('telescope.actions').move_selection_next, -- move to next result
-            ['<C-l>'] = require('telescope.actions').select_default, -- open file
-          },
+        -- You can put your default mappings / updates / etc. in here
+        --  All the info you're looking for is in `:help telescope.setup()`
+        defaults = {
+            mappings = {
+                i = {
+                    ['<C-k>'] = require('telescope.actions').move_selection_previous, -- move to prev result
+                    ['<C-j>'] = require('telescope.actions').move_selection_next, -- move to next result
+                    ['<C-l>'] = require('telescope.actions').select_default, -- open file
+                },
+            },
         },
-      },
-      pickers = {
-        find_files = {
-          file_ignore_patterns = { 'node_modules', '%.git', '%.venv' },
-          hidden = true,
+        pickers = {
+            find_files = {
+                file_ignore_patterns = { 'node_modules', '%.git', '%.venv','%.git/',  '%.angular[/\\]cache'},
+                hidden = true,
+            },
+            live_grep = {
+                file_ignore_patterns = { 'node_modules', '%.git', '%.venv'},
+                additional_args = function(_)
+                    return { '--hidden' }
+                end,
+            },
         },
-        live_grep = {
-          file_ignore_patterns = { 'node_modules', '%.git', '%.venv' },
-          additional_args = function(_)
-            return { '--hidden' }
-          end,
+        extensions = {
+            ['ui-select'] = {
+                require('telescope.themes').get_dropdown(),
+            },
         },
-      },
-      extensions = {
-        ['ui-select'] = {
-          require('telescope.themes').get_dropdown(),
-        },
-      },
     }
 
     -- Enable Telescope extensions if they are installed

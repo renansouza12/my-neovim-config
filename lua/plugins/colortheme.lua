@@ -7,7 +7,7 @@ return {
     require("poimandres").setup {
       bold_vert_split        = false, -- Set to true if you like bold window separators
       dim_nc_background      = false, -- Dim background of non-current windows
-      disable_background     = false, -- Set true if you want transparency
+      disable_background     = true, -- Set true if you want transparency
       disable_float_background = false,
       disable_italics        = false, -- Disable all italics
     }
