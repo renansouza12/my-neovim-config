@@ -137,6 +137,15 @@ config = function()
                   importModuleSpecifierEnding = "minimal",
               },
           },
+
+          root_dir = function(fname)
+              local util = require("lspconfig.util")
+
+              if util.root_pattern("angular.json")(fname) then
+                  return nil
+              end
+              return util.root_pattern("tsconfig.json","package.json",".git")(fname)
+          end,
       },
       -- Angular Language Service
       angularls = {
@@ -158,7 +167,8 @@ config = function()
                   vim.fn.expand("$HOME") .. "/.npm-global/lib/node_modules",
               }
           end,
-          filetypes = {"html", "typescriptreact", "typescript.tsx" },
+          filetypes = {"typescript","html", "typescriptreact", "typescript.tsx" },
+          root_dir = require("lspconfig.util").root_pattern("angular.json","project.json"),
       },
       ruff = {},
       pylsp = {
