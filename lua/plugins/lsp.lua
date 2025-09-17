@@ -197,6 +197,7 @@ config = function()
       terraformls = {},
       jsonls = {},
       yamlls = {},
+      jdtls = {},
       lua_ls = {
           settings = {
               Lua = {

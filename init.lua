@@ -35,5 +35,6 @@ require('lazy').setup({
     require 'plugins.indent-blankline',
     require 'plugins.toggleterm',
     require 'plugins.autopairs',
+    require 'plugins.jdtls'
 
 })
