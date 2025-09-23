@@ -182,19 +182,6 @@ return {
         }
     end, { desc = '[S]earch [/] in Open Files' })
 
-    -- Additional useful keymaps for Angular development
-    vim.keymap.set('n', '<leader>st', function()
-      builtin.find_files {
-        prompt_title = 'Search TypeScript Files',
-        find_command = { 'fd', '--type', 'f', '--extension', 'ts', '--exclude', 'node_modules', '--exclude', 'dist' }
-      }
-    end, { desc = '[S]earch [T]ypeScript files' })
 
-    vim.keymap.set('n', '<leader>sc', function()
-      builtin.find_files {
-        prompt_title = 'Search Components',
-        find_command = { 'fd', '--type', 'f', '--extension', 'component.ts', '--exclude', 'node_modules', '--exclude', 'dist' }
-      }
-    end, { desc = '[S]earch [C]omponents' })
   end,
 }
