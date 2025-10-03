@@ -9,21 +9,26 @@ if root_dir == nil then
     return
 end
 
--- Workspace directory (separate per project)
+-- Workspace directory (unique per project)
 local workspace_dir = home .. "/.jdtls-workspace/" .. vim.fn.fnamemodify(root_dir, ":p:h:t")
+workspace_dir = workspace_dir:gsub("\\", "/") -- fix paths on Windows
+
+-- Reuse LSP capabilities from cmp
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 -- Config for jdtls
 local config = {
-    cmd = {
-        "jdtls",
-        "-data", workspace_dir,
-    },
+    cmd = { "jdtls", "-data", workspace_dir },
     root_dir = root_dir,
+    capabilities = capabilities,
     settings = {
-        java = {},
+        java = {
+            signatureHelp = { enabled = true },
+            contentProvider = { preferred = "fernflower" }, -- decompiler
+        },
     },
     init_options = {
-        bundles = {},
+        bundles = {}, -- later we can add debug/test bundles
     },
 }
 

@@ -7,8 +7,6 @@ vim.cmd([[
   filetype plugin indent on
 ]])
 
-
-
 -- Set up the Lazy plugin manager
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -22,6 +20,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Set up plugins
 require('lazy').setup({
+    require 'plugins.jdtls',
     require 'plugins.treesitter',
     require 'plugins.colortheme',
     require 'plugins.neotree',
@@ -35,7 +34,6 @@ require('lazy').setup({
     require 'plugins.indent-blankline',
     require 'plugins.toggleterm',
     require 'plugins.autopairs',
-    require 'plugins.jdtls',
     require 'plugins.devicons',
 
 })
