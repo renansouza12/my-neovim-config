@@ -20,6 +20,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Set up plugins
 require('lazy').setup({
+    require 'plugins.mason',
     require 'plugins.jdtls',
     require 'plugins.treesitter',
     require 'plugins.colortheme',
