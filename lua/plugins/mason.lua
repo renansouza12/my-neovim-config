@@ -16,7 +16,11 @@ return {
 
         require("mason-lspconfig").setup({
             ensure_installed = {
-                "jdtls",  -- Java
+                "tsserver",
+                "html",
+                "cssls",
+                "emmet_ls",
+                "angularls",
                 "lua_ls", -- Lua (for Neovim config)
             },
             automatic_installation = true,

@@ -1,53 +1,68 @@
 return {
-  "olivercederborg/poimandres.nvim",
-  name = "poimandres",
-  lazy = false,
-  priority = 1000,
-  config = function()
-    require("poimandres").setup {
-      bold_vert_split        = false, -- Set to true if you like bold window separators
-      dim_nc_background      = false, -- Dim background of non-current windows
-      disable_background     = true, -- Set true if you want transparency
-      disable_float_background = false,
-      disable_italics        = false, -- Disable all italics
-    }
+    "rebelot/kanagawa.nvim",
+    name = "kanagawa",
+    lazy = false,
+    priority = 1000,
+    config = function()
+        -- Setup Kanagawa
+        require("kanagawa").setup({
+            compile = true,            -- enable compilation for faster startup
+            undercurl = true,          -- enable undercurl for diagnostics
+            commentStyle = { italic = true },
+            functionStyle = { bold = false },
+            keywordStyle = { italic = true },
+            statementStyle = { bold = true },
+            typeStyle = {},
+            variablebuiltinStyle = { italic = true },
+            specialReturn = true,
+            specialException = true,
+            dimInactive = false,
+            globalStatus = true,
+            colors = {
+                theme = {
+                    all = {
+                        ui = {
+                            bg_gutter = "none",  -- make signcolumn transparent
+                        },
+                    },
+                },
+            },
+        })
 
-    -- enable colorscheme
-    vim.cmd.colorscheme("poimandres")
+        -- enable colorscheme
+        vim.cmd.colorscheme("kanagawa")
 
-    -- UI options for safety
-    vim.o.termguicolors = true
-    vim.o.background = "dark"
+        -- UI options
+        vim.o.termguicolors = true
+        vim.o.background = "dark"
 
-    -- Integrations / highlights
-    -- Poimandres doesn’t ship explicit integrations like Catppuccin,
-    -- so we link highlights here to keep plugins consistent.
-    local hl = vim.api.nvim_set_hl
-    local colors = require("poimandres.palette")
+        -- highlight tweaks for plugins (like your old Poimandres config)
+        local hl = vim.api.nvim_set_hl
+        local colors = require("kanagawa.colors").setup() -- get palette
 
-    -- Neo-tree background tweak
-    hl(0, "NeoTreeNormal", { bg = "none" })
-    hl(0, "NeoTreeNormalNC", { bg = "none" })
+        -- Neo-tree background tweak
+        hl(0, "NeoTreeNormal", { bg = "none" })
+        hl(0, "NeoTreeNormalNC", { bg = "none" })
 
-    -- Telescope borders / prompt
-    hl(0, "TelescopeNormal", { bg = "none" })
-    hl(0, "TelescopeBorder", { fg = colors.blue, bg = "none" })
-    hl(0, "TelescopePromptNormal", { bg = "none" })
-    hl(0, "TelescopePromptBorder", { fg = colors.cyan, bg = "none" })
+        -- Telescope borders / prompt
+        hl(0, "TelescopeNormal", { bg = "none" })
+        hl(0, "TelescopeBorder", { fg = colors.syn.comment, bg = "none" })
+        hl(0, "TelescopePromptNormal", { bg = "none" })
+        hl(0, "TelescopePromptBorder", { fg = colors.fun.red, bg = "none" })
 
-    -- CMP menu
-    hl(0, "CmpNormal", { bg = "none" })
+        -- CMP menu
+        hl(0, "CmpNormal", { bg = "none" })
 
-    -- Gitsigns
-    hl(0, "GitSignsAdd", { fg = colors.green })
-    hl(0, "GitSignsChange", { fg = colors.yellow })
-    hl(0, "GitSignsDelete", { fg = colors.red })
+        -- Gitsigns
+        hl(0, "GitSignsAdd", { fg = colors.ui.green })
+        hl(0, "GitSignsChange", { fg = colors.ui.yellow })
+        hl(0, "GitSignsDelete", { fg = colors.ui.red })
 
-    -- Trouble (LSP diagnostics list)
-    hl(0, "TroubleNormal", { bg = "none" })
+        -- Trouble (LSP diagnostics list)
+        hl(0, "TroubleNormal", { bg = "none" })
 
-    -- Which-key popup
-    hl(0, "WhichKeyFloat", { bg = "none" })
-  end,
+        -- Which-key popup
+        hl(0, "WhichKeyFloat", { bg = "none" })
+    end,
 }
 
