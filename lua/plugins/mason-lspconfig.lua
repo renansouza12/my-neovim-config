@@ -4,7 +4,7 @@ return {
   config = function()
     require("mason-lspconfig").setup({
       -- servers you want installed automatically
-      ensure_installed = { "tsserver", "html", "cssls", "emmet_ls", "angularls", "lua_ls", "jdtls" },
+      ensure_installed = { "ts_ls", "html", "cssls", "emmet_ls", "angularls", "lua_ls", "jdtls" },
     })
   end,
 }

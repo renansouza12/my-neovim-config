@@ -74,18 +74,17 @@ return {
                         indent_marker = "│",
                         last_indent_marker = "└",
                         highlight = "NeoTreeIndentMarker",
-                        with_expanders = nil,
-                        expander_collapsed = "",
-                        expander_expanded = "",
+                        with_expanders = true,
+                        expander_collapsed = "",
+                        expander_expanded = "", 
                         expander_highlight = "NeoTreeExpander",
                     },
                     icon = {
-                        folder_closed = "",
-                        folder_open = "",
-                        folder_empty = "󰜌",
-                        default = "*",
-                        highlight = "NeoTreeFileIcon"
-                    },
+                        folder_closed = "",   -- default closed folder
+                        folder_open = "",     -- default open folder
+                        folder_empty = "󰜌",    -- empty folder
+                        default = "",         -- default file icon
+                        highlight = "NeoTreeFileIcon",                    },
                     modified = {
                         symbol = "[+]",
                         highlight = "NeoTreeModified",
@@ -204,12 +203,15 @@ return {
             vim.keymap.set("n", "<leader>o", ":Neotree focus<CR>", { desc = "Focus Neo-tree" })
             
             -- Optional: Custom highlights (uncomment and adjust colors to your liking)
-            -- vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "#1e1e2e" })
-            -- vim.api.nvim_set_hl(0, "NeoTreeNormalNC", { bg = "#1e1e2e" })
-            -- vim.api.nvim_set_hl(0, "NeoTreeDirectoryIcon", { fg = "#89b4fa" })
-            -- vim.api.nvim_set_hl(0, "NeoTreeGitAdded", { fg = "#a6e3a1" })
-            -- vim.api.nvim_set_hl(0, "NeoTreeGitModified", { fg = "#f9e2af" })
-            -- vim.api.nvim_set_hl(0, "NeoTreeGitDeleted", { fg = "#f38ba8" })
+            vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "#1e1e2e" })
+            vim.api.nvim_set_hl(0, "NeoTreeNormalNC", { bg = "#1e1e2e" })
+            vim.api.nvim_set_hl(0, "NeoTreeDirectoryIcon", { fg = "#89b4fa" })
+            vim.api.nvim_set_hl(0, "NeoTreeGitAdded", { fg = "#a6e3a1" })
+            vim.api.nvim_set_hl(0, "NeoTreeGitModified", { fg = "#f9e2af" })
+            vim.api.nvim_set_hl(0, "NeoTreeGitDeleted", { fg = "#f38ba8" })
+            vim.api.nvim_set_hl(0, "NeoTreeFileIcon", { link = "Directory" })
+            vim.api.nvim_set_hl(0, "NeoTreeDirectoryIcon", { link = "Directory" })
+
         end,
     },
     
