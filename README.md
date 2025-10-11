@@ -1,4 +1,4 @@
-# Neovim Configuration for Windows
+# My Neovim Configuration for Windows
 
 A modern Neovim setup optimized for web development (Angular, TypeScript, JavaScript) and Java development on Windows. This configuration uses Lazy.nvim as the plugin manager and includes LSP support, fuzzy finding, Git integration, and a beautiful UI.
 
