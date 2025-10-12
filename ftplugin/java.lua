@@ -21,9 +21,13 @@ if launcher_jar == '' then
 end
 
 -- JDTLS configuration
+
+local lombok_path = home .. '/.m2/repository/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar'
+
 local config = {
     cmd = {
         'java',
+        '-javaagent:' .. lombok_path,
         '-Declipse.application=org.eclipse.jdt.ls.core.id1',
         '-Dosgi.bundles.defaultStartLevel=4',
         '-Declipse.product=org.eclipse.jdt.ls.core.product',

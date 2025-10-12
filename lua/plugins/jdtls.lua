@@ -25,6 +25,7 @@ return {
 local config = {
     cmd = {
         "C:/Program Files/Java/jdk-25/bin/java.exe",
+         "-javaagent:" .. mason_path .. "\\lombok.jar",
         "-Declipse.application=org.eclipse.jdt.ls.core.id1",
         "-Dosgi.bundles.defaultStartLevel=4",
         "-Declipse.product=org.eclipse.jdt.ls.core.product",
