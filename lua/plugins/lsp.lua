@@ -58,7 +58,7 @@ return {
         ---------------------------------------------------------------------------
         require("mason-lspconfig").setup({
             ensure_installed = {
-                "ts_ls",     -- ✅ new name for tsserver
+                "ts_ls",
                 "html",
                 "cssls",
                 "emmet_ls",
@@ -69,12 +69,11 @@ return {
         })
 
         ---------------------------------------------------------------------------
-        -- Setup servers manually (new approach)
+        -- Setup servers using new vim.lsp.config API (Neovim 0.11+)
         ---------------------------------------------------------------------------
-        local lspconfig = require("lspconfig")
 
         -- TypeScript / JavaScript
-        lspconfig.ts_ls.setup({
+        vim.lsp.config("ts_ls", {
             capabilities = capabilities,
             init_options = {
                 preferences = {
@@ -92,7 +91,7 @@ return {
         })
 
         -- Lua
-        lspconfig.lua_ls.setup({
+        vim.lsp.config("lua_ls", {
             capabilities = capabilities,
             settings = {
                 Lua = {
@@ -114,8 +113,10 @@ return {
 
         -- Other servers
         for _, server in ipairs({ "html", "cssls", "emmet_ls", "angularls" }) do
-            lspconfig[server].setup({ capabilities = capabilities })
+            vim.lsp.config(server, { capabilities = capabilities })
         end
+
+        -- Enable the LSP servers
+        vim.lsp.enable({ "ts_ls", "lua_ls", "html", "cssls", "emmet_ls", "angularls" })
     end,
 }
-
