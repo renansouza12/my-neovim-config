@@ -9,10 +9,10 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 local opts = { noremap = true, silent = true }
 
 -- save file
-vim.keymap.set('n', '<C-s>', '<cmd> w <CR>', opts)
+-- vim.keymap.set('n', '<C-s>', '<cmd> w <CR>', opts)
 
 -- Force save File
-vim.keymap.set('n','<leader>fs','<cmd>w!<CR>',opts)
+vim.keymap.set('n','<C-s>','<cmd>w!<CR>',opts)
 
 -- save file without auto-formatting
 vim.keymap.set('n', '<leader>sn', '<cmd>noautocmd w <CR>', opts)
@@ -24,7 +24,7 @@ vim.keymap.set('n', '<C-q>', '<cmd> q <CR>', opts)
 vim.keymap.set('n', 'x', '"_x', opts)
 
 -- LSP: Code Action (imports)" 
-vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+vim.keymap.set("n", "<leader>.", vim.lsp.buf.code_action, {})
 
 -- Vertical scroll and center
 vim.keymap.set('n', '<C-d>', '<C-d>zz', opts)

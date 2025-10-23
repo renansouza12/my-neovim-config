@@ -1,6 +1,6 @@
 require 'core.options'
 require 'core.keymaps'
-
+ 
 -- Enable syntax and filetype detection globally
 vim.cmd([[
   syntax enable
