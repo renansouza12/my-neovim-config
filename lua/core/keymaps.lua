@@ -8,8 +8,11 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- For conciseness
 local opts = { noremap = true, silent = true }
 
+-- Exit insert mode
+vim.api.nvim_set_keymap("i","jj","<Esc>",{noremap = false})
+
 -- save file
--- vim.keymap.set('n', '<C-s>', '<cmd> w <CR>', opts)
+vim.keymap.set('n', '<C-s>', '<cmd> w <CR>', opts)
 
 -- Force save File
 vim.keymap.set('n','<C-s>','<cmd>w!<CR>',opts)
