@@ -14,8 +14,7 @@ return {
                 popup_border_style = "rounded",
                 enable_git_status = true,
                 enable_diagnostics = true,
-                
-                -- Window settings
+
                 window = {
                     position = "left",
                     width = 30,
@@ -24,10 +23,7 @@ return {
                         nowait = true,
                     },
                     mappings = {
-                        ["<space>"] = {
-                            "toggle_node",
-                            nowait = false,
-                        },
+                        ["<space>"] = { "toggle_node", nowait = false },
                         ["<2-LeftMouse>"] = "open",
                         ["<cr>"] = "open",
                         ["<esc>"] = "cancel",
@@ -39,12 +35,7 @@ return {
                         ["w"] = "open_with_window_picker",
                         ["C"] = "close_node",
                         ["z"] = "close_all_nodes",
-                        ["a"] = {
-                            "add",
-                            config = {
-                                show_path = "none"
-                            }
-                        },
+                        ["a"] = { "add", config = { show_path = "none" } },
                         ["A"] = "add_directory",
                         ["d"] = "delete",
                         ["r"] = "rename",
@@ -61,11 +52,10 @@ return {
                         ["i"] = "show_file_details",
                     },
                 },
-                
-                -- Component configs (icons and styling)
+
                 default_component_configs = {
                     container = {
-                        enable_character_fade = true
+                        enable_character_fade = true,
                     },
                     indent = {
                         indent_size = 2,
@@ -75,16 +65,17 @@ return {
                         last_indent_marker = "└",
                         highlight = "NeoTreeIndentMarker",
                         with_expanders = true,
-                        expander_collapsed = "",
-                        expander_expanded = "", 
+                        expander_collapsed = "",
+                        expander_expanded = "",
                         expander_highlight = "NeoTreeExpander",
                     },
                     icon = {
-                        folder_closed = "",   -- default closed folder
-                        folder_open = "",     -- default open folder
-                        folder_empty = "󰜌",    -- empty folder
-                        default = "",         -- default file icon
-                        highlight = "NeoTreeFileIcon",                    },
+                        folder_closed = "",
+                        folder_open = "",
+                        folder_empty = "󰜌",
+                        default = "",
+                        highlight = "NeoTreeFileIcon",
+                    },
                     modified = {
                         symbol = "[+]",
                         highlight = "NeoTreeModified",
@@ -96,43 +87,33 @@ return {
                     },
                     git_status = {
                         symbols = {
-                            added     = "✚",
-                            modified  = "",
-                            deleted   = "✖",
-                            renamed   = "󰁕",
-                            untracked = "",
-                            ignored   = "",
-                            unstaged  = "󰄱",
-                            staged    = "",
-                            conflict  = "",
-                        }
+                            added     = "󰐕 ",
+                            modified  = "󰏬 ",
+                            deleted   = "󰍴 ",
+                            renamed   = "󰑕 ",
+                            untracked = "󰓎 ",
+                            ignored   = "󰈉 ",
+                            unstaged  = "󱈸 ",
+                            staged    = "󰸩 ",
+                            conflict  = "󰞇 "
+                        },
                     },
                 },
-                
-                -- Filesystem settings
+
                 filesystem = {
                     filtered_items = {
                         visible = false,
                         hide_dotfiles = false,
                         hide_gitignored = true,
                         hide_hidden = true,
-                        hide_by_name = {
-                            "node_modules"
-                        },
+                        hide_by_name = { "node_modules" },
                         hide_by_pattern = {
                             "*.meta",
                             "*/src/*/tsconfig.json",
                         },
-                        always_show = {
-                            ".gitignored",
-                        },
-                        never_show = {
-                            ".DS_Store",
-                            "thumbs.db"
-                        },
-                        never_show_by_pattern = {
-                            ".null-ls_*",
-                        },
+                        always_show = { ".gitignored" },
+                        never_show = { ".DS_Store", "thumbs.db" },
+                        never_show_by_pattern = { ".null-ls_*" },
                     },
                     follow_current_file = {
                         enabled = true,
@@ -144,34 +125,33 @@ return {
                     window = {
                         mappings = {
                             ["<bs>"] = "navigate_up",
-                            ["."] = "set_root",
-                            ["H"] = "toggle_hidden",
-                            ["/"] = "fuzzy_finder",
-                            ["D"] = "fuzzy_finder_directory",
-                            ["#"] = "fuzzy_sorter",
-                            ["f"] = "filter_on_submit",
+                            ["."]    = "set_root",
+                            ["H"]    = "toggle_hidden",
+                            ["/"]    = "fuzzy_finder",
+                            ["D"]    = "fuzzy_finder_directory",
+                            ["#"]    = "fuzzy_sorter",
+                            ["f"]    = "filter_on_submit",
                             ["<c-x>"] = "clear_filter",
-                            ["[g"] = "prev_git_modified",
-                            ["]g"] = "next_git_modified",
-                            ["o"] = { "show_help", nowait=false, config = { title = "Order by", prefix_key = "o" }},
-                            ["oc"] = { "order_by_created", nowait = false },
-                            ["od"] = { "order_by_diagnostics", nowait = false },
-                            ["og"] = { "order_by_git_status", nowait = false },
-                            ["om"] = { "order_by_modified", nowait = false },
-                            ["on"] = { "order_by_name", nowait = false },
-                            ["os"] = { "order_by_size", nowait = false },
-                            ["ot"] = { "order_by_type", nowait = false },
+                            ["[g"]   = "prev_git_modified",
+                            ["]g"]   = "next_git_modified",
+                            ["o"]    = { "show_help", nowait = false, config = { title = "Order by", prefix_key = "o" } },
+                            ["oc"]   = { "order_by_created", nowait = false },
+                            ["od"]   = { "order_by_diagnostics", nowait = false },
+                            ["og"]   = { "order_by_git_status", nowait = false },
+                            ["om"]   = { "order_by_modified", nowait = false },
+                            ["on"]   = { "order_by_name", nowait = false },
+                            ["os"]   = { "order_by_size", nowait = false },
+                            ["ot"]   = { "order_by_type", nowait = false },
                         },
                         fuzzy_finder_mappings = {
                             ["<down>"] = "move_cursor_down",
-                            ["<C-n>"] = "move_cursor_down",
-                            ["<up>"] = "move_cursor_up",
-                            ["<C-p>"] = "move_cursor_up",
+                            ["<C-n>"]  = "move_cursor_down",
+                            ["<up>"]   = "move_cursor_up",
+                            ["<C-p>"]  = "move_cursor_up",
                         },
                     },
                 },
-                
-                -- Buffers settings
+
                 buffers = {
                     follow_current_file = {
                         enabled = true,
@@ -180,8 +160,7 @@ return {
                     group_empty_dirs = true,
                     show_unloaded = true,
                 },
-                
-                -- Git status settings
+
                 git_status = {
                     window = {
                         position = "float",
@@ -193,28 +172,44 @@ return {
                             ["gc"] = "git_commit",
                             ["gp"] = "git_push",
                             ["gg"] = "git_commit_and_push",
-                        }
-                    }
+                        },
+                    },
                 },
             })
 
             -- Keymaps
             vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>", { desc = "Toggle Neo-tree" })
             vim.keymap.set("n", "<leader>o", ":Neotree focus<CR>", { desc = "Focus Neo-tree" })
-            
-            -- Optional: Custom highlights (uncomment and adjust colors to your liking)
-            vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "#1e1e2e" })
-            vim.api.nvim_set_hl(0, "NeoTreeNormalNC", { bg = "#1e1e2e" })
-            vim.api.nvim_set_hl(0, "NeoTreeDirectoryIcon", { fg = "#89b4fa" })
-            vim.api.nvim_set_hl(0, "NeoTreeGitAdded", { fg = "#a6e3a1" })
-            vim.api.nvim_set_hl(0, "NeoTreeGitModified", { fg = "#f9e2af" })
-            vim.api.nvim_set_hl(0, "NeoTreeGitDeleted", { fg = "#f38ba8" })
-            vim.api.nvim_set_hl(0, "NeoTreeFileIcon", { link = "Directory" })
-            vim.api.nvim_set_hl(0, "NeoTreeDirectoryIcon", { link = "Directory" })
 
+            -- Transparency (bg = NONE so your terminal wallpaper/color shows through)
+            local transparent = {
+                "NeoTreeNormal",
+                "NeoTreeNormalNC",
+                "NeoTreeEndOfBuffer",
+                "NeoTreeWinSeparator",
+            }
+            for _, hl in ipairs(transparent) do
+                vim.api.nvim_set_hl(0, hl, { bg = "NONE", ctermbg = "NONE" })
+            end
+
+            -- Git status colors (fg only — no bg so transparency is preserved)
+            vim.api.nvim_set_hl(0, "NeoTreeGitAdded",       { fg = "#a6e3a1" })  -- green
+            vim.api.nvim_set_hl(0, "NeoTreeGitModified",    { fg = "#f9e2af" })  -- yellow
+            vim.api.nvim_set_hl(0, "NeoTreeGitDeleted",     { fg = "#f38ba8" })  -- red
+            vim.api.nvim_set_hl(0, "NeoTreeGitRenamed",     { fg = "#89dceb" })  -- cyan
+            vim.api.nvim_set_hl(0, "NeoTreeGitUntracked",   { fg = "#cba6f7" })  -- mauve
+            vim.api.nvim_set_hl(0, "NeoTreeGitIgnored",     { fg = "#585b70" })  -- muted gray
+            vim.api.nvim_set_hl(0, "NeoTreeGitUnstaged",    { fg = "#fab387" })  -- peach
+            vim.api.nvim_set_hl(0, "NeoTreeGitStaged",      { fg = "#a6e3a1" })  -- green
+            vim.api.nvim_set_hl(0, "NeoTreeGitConflict",    { fg = "#f38ba8", bold = true })  -- red bold
+
+            -- Directory / file icons
+            vim.api.nvim_set_hl(0, "NeoTreeDirectoryIcon",  { fg = "#89b4fa" })  -- blue
+            vim.api.nvim_set_hl(0, "NeoTreeDirectoryName",  { fg = "#89b4fa" })
+            vim.api.nvim_set_hl(0, "NeoTreeFileIcon",       { link = "Directory" })
         end,
     },
-    
+
     -- nvim-cmp
     {
         "hrsh7th/nvim-cmp",
@@ -236,7 +231,7 @@ return {
                 },
                 mapping = cmp.mapping.preset.insert({
                     ["<C-Space>"] = cmp.mapping.complete(),
-                    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+                    ["<CR>"]      = cmp.mapping.confirm({ select = true }),
                 }),
                 sources = cmp.config.sources({
                     { name = "nvim_lsp" },
