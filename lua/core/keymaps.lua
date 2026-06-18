@@ -9,7 +9,7 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 local opts = { noremap = true, silent = true }
 
 -- Exit insert mode
-vim.api.nvim_set_keymap("i","jj","<Esc>",{noremap = false})
+vim.api.nvim_set_keymap("i","jk","<Esc>",{noremap = false})
 
 -- save file
 vim.keymap.set('n', '<C-s>', '<cmd> w <CR>', opts)

@@ -66,6 +66,7 @@ return {
                 "emmet_ls",
                 "angularls",
                 "lua_ls",
+                "yamlls",
             },
             automatic_installation = true,
         })
@@ -113,12 +114,29 @@ return {
             },
         })
 
+        -- YAML
+        vim.lsp.config("yamlls", {
+            capabilities = capabilities,
+            settings = {
+                yaml = {
+                    schemaStore = {
+                        enable = true,
+                        url = "https://www.schemastore.org/api/json/catalog.json",
+                    },
+                    validate = true,
+                    hover = true,
+                    completion = true,
+                },
+            },
+        })
+
+
         -- Other servers
         for _, server in ipairs({ "html", "cssls", "emmet_ls", "angularls" }) do
             vim.lsp.config(server, { capabilities = capabilities })
         end
 
         -- Enable the LSP servers
-        vim.lsp.enable({ "ts_ls", "lua_ls", "html", "cssls", "emmet_ls", "angularls" })
+        vim.lsp.enable({ "ts_ls", "lua_ls", "html", "cssls", "emmet_ls", "angularls","yamlls" })
     end,
 }

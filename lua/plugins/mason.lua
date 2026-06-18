@@ -22,6 +22,7 @@ return {
                 "emmet_ls",
                 "angularls",
                 "lua_ls", -- Lua (for Neovim config)
+                "yamlls",
             },
             automatic_installation = true,
         })

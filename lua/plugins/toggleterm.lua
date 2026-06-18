@@ -7,6 +7,7 @@ return {
             direction = "float",
             start_in_insert = true,
             close_on_exit = true,
+            shell = "pwsh.exe -NoLogo",
             float_opts = {
                 border = "curved",
                 winblend = 0,
